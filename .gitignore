@@ -33,3 +33,5 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+/Ex_Files_React_Server
