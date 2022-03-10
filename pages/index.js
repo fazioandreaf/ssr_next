@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./index.module.css";
 import Card from "./Card";
-import data from "./API/data.json";
+import { initStore, initialCards, addItem } from "./../store";
 
-export default class Home extends React.Component {
-	static async getInitialProps() {
-		return { cards: data };
+class Home extends React.Component {
+	static async getInitialProps(store) {
+		return store.dispatch(initialCards());
 	}
 
 	render() {
@@ -19,7 +19,16 @@ export default class Home extends React.Component {
 						<Card key={card.id} />
 					))}
 				</div>
+				{/* <button
+					onClick={() => {
+						dispatch(addItem());
+					}}
+				>
+					Add item
+				</button> */}
 			</div>
 		);
 	}
 }
+
+export default initStore.withRedux(Home);
